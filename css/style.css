@@ -1,0 +1,141 @@
+
+
+<style>
+.dbc{
+    box-shadow: 0px 10px 14px -7px #276873;
+    background:linear-gradient(to bottom, #0de52a 5%, #0de52a);
+    background-color:#00aae8;
+    border-radius:8px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:20px;
+    font-weight:bold;
+    padding: 10px;  margin: 10px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #3d768a;
+
+}
+</style>
+  <style>
+  .dbi{
+      box-shadow: 0px 10px 14px -7px #276873;
+      background:linear-gradient(to bottom, #e5da0b 5%, #e5da0b);
+      background-color:#00aae8;
+      border-radius:8px;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:20px;
+      font-weight:bold;
+      padding: 10px;  margin: 10px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #3d768a;
+  }
+</style>
+  <style>
+  .dbinput{
+      box-shadow: 0px 10px 14px -7px #276873;
+      background:linear-gradient(to bottom, #090909 5%, #090909);
+      background-color:#00aae8;
+      border-radius:8px;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:20px;
+      font-weight:bold;
+      padding: 10px;  margin: 10px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #3d768a;
+  }
+</style>
+  <style>
+  .dbw{
+      box-shadow: 0px 10px 14px -7px #276873;
+      background:linear-gradient(to bottom, #e50b0b 5%, #e50b0b);
+      background-color:#00aae8;
+      border-radius:8px;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:20px;
+      font-weight:bold;
+      padding: 10px;  margin: 10px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #3d768a;
+  }
+</style>
+
+<style>
+  .mainheader{
+      margin: 0 auto;
+      text-align:justify;
+      box-shadow: 0px 10px 14px -7px #276873;
+      background:linear-gradient(to bottom, #00aae8 5%, #4f939e);
+      background-color:#00aae8;
+      border-radius:8px;
+      display:inline-block;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:20px;
+      font-weight:bold;
+      padding: 10px;  margin: 10px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #3d768a;
+  }
+  </style>
+    <style>
+    .logout {
+
+          box-shadow: 0px 10px 14px -7px #276873;
+          background:linear-gradient(to bottom, #00aae8 5%, #4f939e);
+          background-color:#00aae8;
+          border-radius:8px;
+          display:inline-block;
+          cursor:pointer;
+          color:#ffffff;
+          font-family:Arial;
+          font-size:20px;
+          font-weight:bold;
+        padding: 10px;  margin: 10px;
+          text-decoration:none;
+          text-shadow:0px 1px 0px #3d768a;
+    }
+
+    </style>
+    <style>
+      .loader {
+          border: 16px solid #f3f3f3; /* Light grey */
+          border-top: 16px solid #3498db; /* Blue */
+          border-radius: 50%;
+          width: 120px;
+          height: 120px;
+          animation: spin 2s linear infinite;
+      }
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+    </style>
+
+    <style>
+      .maintable {
+
+            box-shadow: 0px 10px 14px -7px #276873;
+            background:linear-gradient(to bottom, #00aae8 5%, #4f939e);
+            background-color:#00aae8;
+            border-radius:8px;
+            display:inline-block;
+            font-family:Arial;
+            font-size:20px;
+            font-weight:bold;
+            padding: 10px;  margin: 10px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #3d768a;
+      }
+    </style>
