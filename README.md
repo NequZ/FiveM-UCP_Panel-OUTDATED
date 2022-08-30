@@ -40,4 +40,10 @@ To create new Logs you can for example use the following Code:
     fwrite($logfile, $log);
     fclose($logfile);`
 
+I will continue to work on the panel.
+There should be possibilities like editing users. So that you can make adjustments such as setting whitelists.
+Also I want to rebuild the security a bit so that users don't get to pages that require a login or a certain rank.
+Also passwords are currently in plain text in the database. This was mainly for testing purposes. I recommend that this be changed. And of course the frontend should be improved :D
+
+
 If you have any questions or problems, you can contact me. Discord: Niclas#1352
