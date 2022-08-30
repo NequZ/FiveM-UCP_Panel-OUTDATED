@@ -26,8 +26,6 @@ if (isset($_POST['btn-delete'])) {
 }
 
 
-
-
 echo  '<title>Admin Panel</title>';
 echo '<h3>Admin Panel</h3>';
 echo '<h4>Show and Manage your Team</h4>';
@@ -35,7 +33,10 @@ echo '<br>';
 
 echo '<form action="addnewuser.php" method="post">';
 echo '<input type="submit" class="btn btn-blue" name="btn-add" value="Add New User">';
-echo '<br>';
+echo '</form>';
+echo '<form action="ucp.php" method="post">';
+echo '<button type="submit" class="btn btn-info" name="btn-backkk" value="Back">Back to UCP</button>';
+echo '</form>';
 // show table with all cp_user
 $username = $_SESSION['username'];
 $sql = "SELECT * FROM cp_user";
