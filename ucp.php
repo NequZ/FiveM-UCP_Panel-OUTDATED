@@ -1,39 +1,75 @@
-
 <?php
-include 'css/style.css';
 session_start();
+include 'css/style.css';
+include 'config.php';
+if(!isset($_SESSION['username'])) {
+    echo '<div class="alert alert-danger">You are not logged in</div>';
+    header( "Refresh:1; url='index.php'");
+}
+if (isset($_POST['btn-logout'])) {
+    header( "Refresh:1; url='logout.php'");
+} else if (isset($_POST['btn-mysql'])) {
+    try {
+        $fivem = new PDO('mysql:host=localhost;dbname=fivem', 'root', ''); // Change that to your FiveM Database String, like in the config.php
+        echo '<div class="alert alert-success">MySQL is connected</div>';
+    } catch (PDOException $e) {
+        echo '<div class="alert alert-danger">MySQL is not connected</div>';
+    }
+} else if (isset($_POST['btn-success'])) {
 
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    header( "Refresh:1; url='main.php'");
+}
+else if (isset($_POST['btn-adminpanel'])) {
 
-} else {
-
-    header("refresh:1;url=index.php");
-    echo "Please log in first to see this page.";
+    header( "Refresh:1; url='admin.php'");
 }
 
+
+
 ?>
-<meta http-equiv="refresh" content="900;url=logout.php" />
-<br>
-<style>
-    body {
-        background-image: url('img/brlogo_02.jpg');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-    }
-</style>
-<div class="mainheader">
-    <h4>Welcome to the UCP from the Server [SERVERNAME]</h4>
- </div>
 
-<div class="navbar">
-    <style>"text-align:center;"</style>
-    <button onclick="location.href='check.php'" value=".$firstname. && .$lastname." class="logout">UCP</button>
-    <button onclick="location.href='logout.php'" class="logout">Logout</button>
-    <button onclick="location.href='settings.php'" class="logout">Settings</button>
+<html>
+<head>
+    <title>Panel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>UCP</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Hello <span><?php echo $_SESSION['username']; ?></span></h3>
+                    <h4 class="panel-title">Your Current Rank is <b><?php echo $_SESSION['rank']; ?></b></h4>
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $paneldescription; ?></p>
+                </div>
 
-</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post">
+                <input class="btn-success" type="submit" name="btn-success" value="UCP">
+                <input class="btn-logout" type="submit" name="btn-logout" value="Logout">
+                <?php if ($_SESSION['rank'] == 'Administrator' || $_SESSION['rank'] == 'Superadministrator') { ?> <!-- Change that to your ranks to show the Admin Panel -->
+                    <input class="btn-info" type="submit" name="btn-adminpanel" value="Admin Panel">
+                    <input class="btn-info" type="submit" name="btn-mysql" value="Check FiveM Database Connection">
+                <?php } ?>
+            </form>
+        </div>
+</body>
 
 
-
- </body>

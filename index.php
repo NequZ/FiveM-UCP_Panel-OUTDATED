@@ -1,94 +1,79 @@
 <?php
-
-include 'css/style.css';
 include 'config.php';
+include 'css/style.css';
 session_start();
+ try {
+        $db = new PDO('mysql:host=localhost;dbname=fivem', 'root', '');
+        echo '<div class="alert alert-success">MySQL is connected</div>';
+    } catch (PDOException $e) {
+        echo '<div class="alert alert-danger">MySQL is not connected</div>';
+    }
 
-// connect to mysql
-$mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
+// check if username and password exist in database and if yes, then login
+if(isset($_POST['username']) && isset($_POST['password'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $query = $db->prepare("SELECT * FROM cp_user WHERE username = :username AND password = :password");
+    $query->bindParam(':username', $username);
+    $query->bindParam(':password', $password);
+    $query->execute();
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    $rank = $result['rank'];
+    if($result) {
+        header( "Refresh:3; url='login.php'");
+        echo '<div class="alert alert-success">Login Successful</div>';
+        $_SESSION['username'] = $username;
+        $_SESSION['password'] = $password;
+        $_SESSION['rank'] = $rank;
 
-
-
-
-// show some debug informations when debug = true in config
-
-
-
-if ($debugmode == 'true') {
-    echo "<div class='dbc'> <tr><td>MySQL Version: " . $mysqli->server_info . "</td></tr> </div>";
-}
-if ($debugmode == 'true') {
-    if ($mysqli->host_info){
-    echo "<div class='dbc'>
-         <tr><td>Successfully connected to MySQL!</td></tr>       
-            </div>";
 
     } else {
-        echo "<div class='dbw'>
-         <tr><td>Error: $mysqli->connect_error</td></tr>       
-            </div>";
+        echo '<div class="alert alert-danger">Login Failed</div>';
+
     }
 }
-if ($debugmode == 'true') {
-    echo "<div class='dbc'>
-         <tr><td>Current Panel Version: $currentversion</td></tr>       
-            </div>";
-}
-
-// end of debug information
 
 
-
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    echo "<div class='dbc'>
-         <tr><td>You are logged in already. You will be redirect shorty</td></tr>
-         </div>";
-header("refresh:3;url=ucp.php");
-}
 ?>
-<br>
-<link rel="stylesheet" href="css/style.css">
-<!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Fivem UCP</title>
+    <title>Panel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div className="dashboard__container">
+            <h1><span><?php echo $panelname;?></span></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="border-index">
+                <div class="panel-heading">
+                </div>
+                <div class="panel-body"></div>
+                 <?php echo $paneldescription;?>
+            </div>
+        </div>
+    </div>
+        <br>
 <form action="index.php" method="post">
-    <div class='dbi'>
-<input type="text" class="dbinput" name="firstname" placeholder="Firstname">
-<input type="text" class="dbinput" name="lastname" placeholder="Lastname">
-<input type="submit" class="dbinput" value="Submit">
+    <input class="border-index" type="text" name="username" placeholder="Username">
+    <input class="border-index" type="password" name="password" placeholder="Password">
+    <input class ="btn-success" type="submit" value="Login">
+
 </form>
+
+
 </div>
 </body>
 </html>
-
-<?php
-
-// mysql check if firstname and lastname exist in database and if they do, display welcome message
-if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
-     $firstname = $_POST['firstname'];
-     $lastname = $_POST['lastname'];
-     $sql = "SELECT * FROM users WHERE firstname = '$firstname' AND lastname = '$lastname'";
-
-    $_SESSION["sessionfirstname"] = $firstname;
-    $_SESSION["sessionlasttname"] = $lastname;
-    $result = $mysqli->query($sql);
-if ($result->num_rows > 0) {
-        $_SESSION['loggedin'] = true;
-    header("Location: ucp.php");
-
-    } else {
-        echo "<div class='dbw'>
-         <tr><td>No user found with that name!</td></tr>
-         </div>";
-    }
-    // post $firstname and $lastname on next file
-
-}
-
-
-?>
-
