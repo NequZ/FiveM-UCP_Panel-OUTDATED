@@ -25,5 +25,3 @@ You can add here from line 56 your parameters from your database. It is only imp
 Then you can add the previously added column from line 76. Reload your page and check if it is displayed correctly.
 
 If you have any questions or problems, you can contact me. Discord: Niclas#1352
-
-Translated with www.DeepL.com/Translator (free version)
