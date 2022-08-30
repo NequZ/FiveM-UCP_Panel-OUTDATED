@@ -24,4 +24,13 @@ Go to the main.php for this
 You can add here from line 56 your parameters from your database. It is only important that you name the column correctly.
 Then you can add the previously added column from line 76. Reload your page and check if it is displayed correctly.
 
+I also integrated some Simple Logs. You can find the Logfilename in the config.
+
+To create new Logs you can for example use the following Code:
+
+`    $log = "User ".$_SESSION['username']." deleted user ".$username."\n";
+    $logfile = fopen('log.txt', 'a');
+    fwrite($logfile, $log);
+    fclose($logfile);`
+
 If you have any questions or problems, you can contact me. Discord: Niclas#1352
