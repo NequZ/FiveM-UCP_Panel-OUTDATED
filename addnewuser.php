@@ -21,7 +21,7 @@ if (isset($_POST['btn-createnewuser'])) {
     $sql = "SELECT * FROM cp_user WHERE username = '$username'";
     $result = $db->query($sql);
 
-if ($rank != 'Administrator' && $rank != 'Superadministrator' && $rank != 'Support') {
+if ($rank != 'Administrator' && $rank != 'Superadministrator' && $rank != 'Supporter') {
     echo '<div class="alert alert-danger">That Rank is invalid. Please try again</div>';
     header( "Refresh:1; url='addnewuser.php'");}
 
@@ -34,6 +34,13 @@ if ($rank != 'Administrator' && $rank != 'Superadministrator' && $rank != 'Suppo
         $db->exec($sql);
         echo '<div class="alert alert-success">User added</div>';
         header("Refresh:1; url='addnewuser.php'");
+
+        // Log
+        $log = "User ".$_SESSION['username']." added user ".$username." with the Rank ".$rank."\n";
+        $logfile = fopen('log.txt', 'a');
+        fwrite($logfile, $log);
+        fclose($logfile);
+
     }
 
 }

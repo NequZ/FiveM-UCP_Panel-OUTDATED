@@ -26,9 +26,20 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
         $_SESSION['password'] = $password;
         $_SESSION['rank'] = $rank;
 
+// write in logfile when someone
+
+        $logfile = fopen('log.txt', 'a');
+        $log = date('d.m.Y H:i:s') . ' - ' . $username . ' logged in successfully';
+        fwrite($logfile, $log . PHP_EOL);
+        fclose($logfile);
 
     } else {
         echo '<div class="alert alert-danger">Login Failed</div>';
+
+        $logfile = fopen('log.txt', 'a');
+        $log = date('d.m.Y H:i:s') . ' - ' . $username . ' couldnt log in';
+        fwrite($logfile, $log . PHP_EOL);
+        fclose($logfile);
 
     }
 }

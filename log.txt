@@ -1,0 +1,29 @@
+30.08.2022 11:48:18 - Test - Superadministrator - ::1 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36 OPR/89.0.4447.64
+30.08.2022 11:51:38 - Test logged in successfully
+30.08.2022 11:52:28 - h couldnt log in
+30.08.2022 11:52:37 - h couldnt log in
+30.08.2022 11:52:40 - Test logged in successfully
+30.08.2022 11:54:26 - Test logged in successfully
+30.08.2022 11:56:08 - Test opened the UCP
+30.08.2022 11:56:16 - Test opened the Admin Panel
+30.08.2022 11:57:27 - Test Started a MYSQL Check. It was successful
+30.08.2022 11:58:37 - Test opened the UCP
+User: Test searched for: T
+User: Test searched for Players. He used: tes
+User: Test searched for: dfgh
+30.08.2022 11:59:49 - Test opened the Admin Panel
+30.08.2022 12:01:20 - Test opened the Admin Panel
+User Test deleted user Tests
+User Test added user Testuser
+User Test added user Testm
+ with the Rank Administrator
+User Test added user sfg with the Rank Administrator
+User Test deleted user sfg
+User Test deleted user Testuser
+User Test deleted user Testm
+30.08.2022 12:03:58 - Test logged in successfully
+30.08.2022 12:15:20 - Test couldnt log in
+30.08.2022 12:15:26 - Test logged in successfully
+30.08.2022 12:15:35 - Test opened the UCP
+User: Test searched for: fgh
+User: Test searched for: T

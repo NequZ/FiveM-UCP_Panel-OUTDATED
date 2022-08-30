@@ -11,6 +11,13 @@ if(!isset($_SESSION['username'])) {
 if ($_SESSION['rank'] != 'Administrator' && $_SESSION['rank'] != 'Superadministrator') {
     echo '<div class="alert-danger">You are not allowed to access this page</div>';
     header( "Refresh:1; url='ucp.php'");
+
+    // Log
+    $logfile = fopen('log.txt', 'a');
+    $log = date('d.m.Y H:i:s') . ' - ' . $_SESSION['username'] . ' tried to access the admin panel';
+    fwrite($logfile, $log . PHP_EOL);
+    fclose($logfile);
+
 }
 
 if (isset($_POST['btn-add'])) {
@@ -23,6 +30,13 @@ if (isset($_POST['btn-delete'])) {
     $db->exec($sql);
     echo '<div class="alert alert-success">User deleted</div>';
     header( "Refresh:1; url='admin.php'");
+
+    // Log
+    $log = "User ".$_SESSION['username']." deleted user ".$username."\n";
+    $logfile = fopen('log.txt', 'a');
+    fwrite($logfile, $log);
+    fclose($logfile);
+
 }
 
 
@@ -37,6 +51,7 @@ echo '</form>';
 echo '<form action="ucp.php" method="post">';
 echo '<button type="submit" class="btn btn-info" name="btn-backkk" value="Back">Back to UCP</button>';
 echo '</form>';
+
 // show table with all cp_user
 $username = $_SESSION['username'];
 $sql = "SELECT * FROM cp_user";
@@ -71,5 +86,5 @@ if ($result->rowCount() > 0) {
 }} else {
     echo '<div class="alert alert-danger">No Data found</div>';
 }
-?>
+echo '</table>';
 

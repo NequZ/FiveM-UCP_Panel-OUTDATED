@@ -12,16 +12,40 @@ if (isset($_POST['btn-logout'])) {
     try {
         $fivem = new PDO('mysql:host=localhost;dbname=fivem', 'root', ''); // Change that to your FiveM Database String, like in the config.php
         echo '<div class="alert alert-success">MySQL is connected</div>';
+
+        $logfile = fopen('log.txt', 'a');
+        $log = date('d.m.Y H:i:s') . ' - ' . $_SESSION['username'] . ' Started a MYSQL Check. It was successful';
+        fwrite($logfile, $log . PHP_EOL);
+        fclose($logfile);
+
     } catch (PDOException $e) {
         echo '<div class="alert alert-danger">MySQL is not connected</div>';
+
+        $logfile = fopen('log.txt', 'a');
+        $log = date('d.m.Y H:i:s') . ' - ' . $_SESSION['username'] . ' Started a MYSQL Check. It failed';
+        fwrite($logfile, $log . PHP_EOL);
+        fclose($logfile);
+
     }
 } else if (isset($_POST['btn-success'])) {
 
     header( "Refresh:1; url='main.php'");
+    // log
+    $logfile = fopen('log.txt', 'a');
+    $log = date('d.m.Y H:i:s') . ' - ' . $_SESSION['username'] . ' opened the UCP';
+    fwrite($logfile, $log . PHP_EOL);
+    fclose($logfile);
+
 }
 else if (isset($_POST['btn-adminpanel'])) {
 
     header( "Refresh:1; url='admin.php'");
+
+    $logfile = fopen('log.txt', 'a');
+    $log = date('d.m.Y H:i:s') . ' - ' . $_SESSION['username'] . ' opened the Admin Panel';
+    fwrite($logfile, $log . PHP_EOL);
+    fclose($logfile);
+
 }
 
 

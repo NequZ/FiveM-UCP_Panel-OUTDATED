@@ -14,9 +14,6 @@ if (isset($_POST['btn-back'])) {
     header( "Refresh:1; url='ucp.php'");
 }
 
-if (isset($_POST['btn-whitelist'])) {
-
-}
 ?>
 <html>
 <head>
@@ -77,23 +74,27 @@ if (isset($_POST['searchbtn'])) {
                         <h4 class="media-heading"><strong>Last Login</strong>: '.$lastlogin.'</h4>
                         <h4 class="media-heading"><strong>Ban</strong>: '.$ban.'</h4>
                         <h4 class="media-heading"><strong>Whitelist</strong>: '.$whitelist.'</h4>
-                    </div>
-                     <form method="post">
-                            <input class="btn-info" type="submit" name="btn-whitelist" value="Whitelist">
-                            <input class="btn-logout" type="submit" name="btn-ban" value="BAN">
-                        </form>
-                    
+                    </div>                   
                 </div>
             </div>
         </div>';
-
-
-
-
-
         }
+
+        // log search
+        $log = "User: ".$_SESSION['username']." searched for: ".$search;
+        $logfile = fopen('log.txt', 'a');
+        fwrite($logfile, $log."\n");
+        fclose($logfile);
+
     } else {
         echo '<div class="alert alert-danger">No Result Found</div>';
+
+        // log search
+        $log = "User: ".$_SESSION['username']." searched for: ".$search;
+        $logfile = fopen('log.txt', 'a');
+        fwrite($logfile, $log."\n");
+        fclose($logfile);
+
     }}
 
 
