@@ -6,14 +6,14 @@ To be able to include the panel it requires a few things that need to be adjuste
 I'll try to explain these steps here.
 
 Before you start with the integration you have to do the following in your database. I recommend to make a backup of your database in case of problems.
-The SQL for this is located in the folder cp_user.sql.
+The SQL for this is located in the folder `cp_user.sql`.
 
 You can then create an admin account.
-The rank is Superadministrator
+The rank is `Superadministrator`
 
 First of all you have to change the database variable in config.php.
 
-$db = new PDO('mysql:host=localhost;dbname=fivem', 'root', ''); 
+`$db = new PDO('mysql:host=localhost;dbname=fivem', 'root', ''); `
 
 This variable is present in other files a few times.
 It is best to check all files once and replace the string.
@@ -22,7 +22,14 @@ If this is done, you should see that the panel is connected when you reload the 
 Once this is done you can start customizing the panel with your data.
 Go to the main.php for this
 You can add here from line 56 your parameters from your database. It is only important that you name the column correctly.
+
+Here a Example:
+
+`$whitelist = $row['whitelist'];` the Name in the Table is whitelist so you also need to set it as whitelist.
+
 Then you can add the previously added column from line 76. Reload your page and check if it is displayed correctly.
+
+`<h4 class="media-heading"><strong>Whitelist</strong>: '.$whitelist.'</h4>`
 
 I also integrated some Simple Logs. You can find the Logfilename in the config.
 
