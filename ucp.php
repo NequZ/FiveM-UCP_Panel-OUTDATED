@@ -6,6 +6,10 @@ if(!isset($_SESSION['username'])) {
     echo '<div class="alert alert-danger">You are not logged in</div>';
     header( "Refresh:1; url='index.php'");
 }
+if($_SESSION['loggedin'] = false) {
+    echo '<div class="alert alert-success">You are logged in</div>';
+    header( "Refresh:1; url='login.php'");
+}
 if (isset($_POST['btn-logout'])) {
     header( "Refresh:1; url='logout.php'");
 } else if (isset($_POST['btn-mysql'])) {
@@ -63,6 +67,14 @@ else if (isset($_POST['btn-adminpanel'])) {
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="topnav" id="myTopnav">
+
+    <a href="index.php"><i class="fa fa-home"></i> Home</a>
+    <a href="https://github.com/NequZ"><i class="fa fa-github"></i> Contact Me</a>
+    <a href="aboutus.php"><i class="fa fa-user-plus"></i> About Us</a>
+    <a href="news.php"><i class="fa fa-file"></i> News</a>
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -72,7 +84,7 @@ else if (isset($_POST['btn-adminpanel'])) {
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="border-index">
                     <h3 class="panel-title">Hello <span><?php echo $_SESSION['username']; ?></span></h3>
                     <h4 class="panel-title">Your Current Rank is <b><?php echo $_SESSION['rank']; ?></b></h4>
                 </div>
@@ -90,10 +102,10 @@ else if (isset($_POST['btn-adminpanel'])) {
                 <input class="btn-logout" type="submit" name="btn-logout" value="Logout">
                 <?php if ($_SESSION['rank'] == 'Administrator' || $_SESSION['rank'] == 'Superadministrator') { ?> <!-- Change that to your ranks to show the Admin Panel -->
                     <input class="btn-info" type="submit" name="btn-adminpanel" value="Admin Panel">
-                    <input class="btn-info" type="submit" name="btn-mysql" value="Check FiveM Database Connection">
+                    <?php if ($debug == true) {
+                    echo '<input class="btn-info" type="submit" name="btn-mysql" value="Check FiveM Database Connection">';
+                    } ?>
                 <?php } ?>
             </form>
         </div>
 </body>
-
-

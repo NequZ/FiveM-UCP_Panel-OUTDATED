@@ -2,13 +2,15 @@
 include 'config.php';
 include 'css/style.css';
 session_start();
- try {
+if ($debug == true) {
+    try {
+
         $db = new PDO('mysql:host=localhost;dbname=fivem', 'root', '');
         echo '<div class="alert alert-success">MySQL is connected</div>';
     } catch (PDOException $e) {
         echo '<div class="alert alert-danger">MySQL is not connected</div>';
     }
-
+}
 // check if username and password exist in database and if yes, then login
 if(isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
@@ -25,6 +27,7 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $password;
         $_SESSION['rank'] = $rank;
+        $_SESSION['loggedin'] = true;
 
 // write in logfile when someone
 
@@ -56,9 +59,17 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
 
+<body>
+<div class="topnav" id="myTopnav">
+
+    <a href="index.php"><i class="fa fa-home"></i> Home</a>
+    <a href="https://github.com/NequZ"><i class="fa fa-github"></i> Contact Me</a>
+    <a href="aboutus.php"><i class="fa fa-user-plus"></i> About Us</a>
+    <a href="news.php"><i class="fa fa-file"></i> News</a>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-12">

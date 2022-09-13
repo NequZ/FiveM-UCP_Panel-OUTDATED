@@ -26,6 +26,15 @@ if (isset($_POST['btn-back'])) {
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<div class="topnav" id="myTopnav">
+
+    <a href="index.php"><i class="fa fa-home"></i> Home</a>
+    <a href="https://github.com/NequZ"><i class="fa fa-github"></i> Contact Me</a>
+    <a href="aboutus.php"><i class="fa fa-user-plus"></i> About Us</a>
+    <a href="news.php"><i class="fa fa-file"></i> News</a>
+</div>
+
 <div class="panel-body">
     <form method="post">
         <div class="input-group">
@@ -65,6 +74,7 @@ if (isset($_POST['searchbtn'])) {
                 $whitelist = "No";
             }
 
+
             echo '<div class="panel-body">
             <div class="well">
                 <div class="media">
@@ -76,7 +86,7 @@ if (isset($_POST['searchbtn'])) {
                         <h4 class="media-heading"><strong>Whitelist</strong>: '.$whitelist.'</h4>
                     </div>                   
                 </div>
-            </div>
+            </div>              
         </div>';
         }
 
