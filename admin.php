@@ -39,6 +39,13 @@ if (isset($_POST['btn-delete'])) {
 
 }
 
+echo '<div class="topnav" id="myTopnav">
+
+    <a href="index.php"><i class="fa fa-home"></i> Home</a>
+    <a href="https://github.com/NequZ"><i class="fa fa-github"></i> Contact Me</a>
+    <a href="aboutus.php"><i class="fa fa-user-plus"></i> About Us</a>
+    <a href="news.php"><i class="fa fa-file"></i> News</a>
+</div>';
 
 echo  '<title>Admin Panel</title>';
 echo '<h3>Admin Panel</h3>';
@@ -57,7 +64,7 @@ $username = $_SESSION['username'];
 $sql = "SELECT * FROM cp_user";
 $result = $db->query($sql);
 if ($result->rowCount() > 0) {
-    echo '<div class="border-index">';
+    echo '<div class="border-nindex">';
     echo '<table class="table">';
     echo '<thead>';
     echo '<th>Username</th>';
