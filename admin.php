@@ -39,11 +39,17 @@ if (isset($_POST['btn-delete'])) {
 
 }
 
+echo '<div class="topnav" id="myTopnav">
 
+    <a href="index.php"><i class="fa fa-home"></i> Home</a>
+    <a href="https://github.com/NequZ"><i class="fa fa-github"></i> Contact Me</a>
+    <a href="aboutus.php"><i class="fa fa-user-plus"></i> About Us</a>
+    <a href="news.php"><i class="fa fa-file"></i> News</a>
+</div>';
+echo '<div class="border-index02">';
 echo  '<title>Admin Panel</title>';
 echo '<h3>Admin Panel</h3>';
 echo '<h4>Show and Manage your Team</h4>';
-echo '<br>';
 
 echo '<form action="addnewuser.php" method="post">';
 echo '<input type="submit" class="btn btn-blue" name="btn-add" value="Add New User">';
@@ -52,12 +58,15 @@ echo '<form action="ucp.php" method="post">';
 echo '<button type="submit" class="btn btn-info" name="btn-backkk" value="Back">Back to UCP</button>';
 echo '</form>';
 
+echo '</div>';
+echo '<br>';
+
 // show table with all cp_user
 $username = $_SESSION['username'];
 $sql = "SELECT * FROM cp_user";
 $result = $db->query($sql);
 if ($result->rowCount() > 0) {
-    echo '<div class="border-index">';
+    echo '<div class="border-index02">';
     echo '<table class="table">';
     echo '<thead>';
     echo '<th>Username</th>';
