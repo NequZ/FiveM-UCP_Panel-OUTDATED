@@ -1,3 +1,7 @@
+# OUTDATED
+# I am currently working on a new One. I will no longer Update the Panel
+
+
 # FiveM-UCP_Panel
 
 # I created that Panel to learn PHP, the Code is really messy to be honest. And there are a lot of things which can be done better. Feel free to use it as a template or snippet or whatever. Please have mercy. My frontend creativity is on the level of a monkey
